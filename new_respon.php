@@ -16,7 +16,34 @@
 
 	$host = $_GET["Router_IP"];
 	//$host = "192.168.0.1";
-	$community = 'public';
+	$servername = "localhost";
+$username = "root";
+$password = "password";
+$dbname = "logon";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT Router_Name 	,Router_IP 	,Router_ID 	,String ,Remark  FROM router WHERE Router_IP='$host'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo $row["String"]."<br>";
+		$tmp =  $row["String"];
+    }
+} else {
+    echo "0 results";
+}
+
+ //echo $tmp;
+$conn->close();
+
+	$community = $tmp;
 
 	//get system name
 	$sysname = snmpget($host, $community, "system.sysName.0");

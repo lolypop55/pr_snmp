@@ -211,7 +211,7 @@ function myErrorHandler($errno, $errstr, $errfile, $errline) {
                                                             $result = mysql_query($sql);
                                                             $result2 = mysql_query($sql2);
                                                         }
-                                                        echo "<meta http-equiv=\"refresh\" content=\"0;URL=admin_page.php\">";
+                                                        echo "<meta http-equiv=\"refresh\" content=\"0;URL=admin_page3.php\">";
                                                     }
                                                     /* ($delete) {
                                                       for ($i = 0; $i < $count; $i++) {
