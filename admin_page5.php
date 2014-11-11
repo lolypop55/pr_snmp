@@ -4,7 +4,6 @@
 <?php
 $isDown = FALSE;
 date_default_timezone_set("Asia/Bangkok");
-$myfile = fopen("logfile.txt", "a") or die("Unable to open file!");
 
 header("Refresh: 5;");
 
@@ -158,14 +157,16 @@ function myErrorHandler($errno, $errstr, $errfile, $errline) {
                                                         ?></td>
                                                             <td bgcolor="#FFFFFF"><?php if ($isDown){
                                                                 echo "---";
-																if ($_SESSION["status"]!="down"){
-																		$_SESSION["status"] = "down";
-																		$_SESSION["status_in_Down"] = "Sent mail down".date("h:i:sa");
+																if ($_SESSION["status".$rows['Router_Name']]!="down"){
+																		$_SESSION["status".$rows['Router_Name']] = "down";
+																		$_SESSION["check".$rows['Router_Name']] = "down in if ".date("h:i:sa");
 																		
-																}
+																}else{
+																		$_SESSION["check".$rows['Router_Name']] = "down in else".date("h:i:sa");
+
 																		//include "mail_down.php";
 																		//send mail
-
+																}
 
 
 																$txt = $rows['Router_Name']."\t".$rows['Router_IP']."\t".date("Y-m-d")."\t".date("h:i:sa");
@@ -191,9 +192,15 @@ function myErrorHandler($errno, $errstr, $errfile, $errline) {
 															
 														}else{																
 																echo $snmpSysUptime;
-																if ($_SESSION["status"]=="down"){
-																		$_SESSION["status"] = "up";
-																		$_SESSION["status_in_up"] = "Sent mail up".date("h:i:sa");
+																if ($_SESSION["status".$rows['Router_Name']]!="up"){
+																		$_SESSION["status".$rows['Router_Name']] = "up";
+																		$_SESSION["check".$rows['Router_Name']] = "up in if ".date("h:i:sa");
+																		
+																}else{
+																		$_SESSION["check".$rows['Router_Name']] = "up in else".date("h:i:sa");
+
+																		//include "mail_down.php";
+																		//send mail
 																}
 															
 														}
