@@ -1,3 +1,4 @@
+<?php session_start();  ?>
 <!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com ���� �������ǹ������� -->
 <?php
@@ -157,6 +158,16 @@ function myErrorHandler($errno, $errstr, $errfile, $errline) {
                                                         ?></td>
                                                             <td bgcolor="#FFFFFF"><?php if ($isDown){
                                                                 echo "---";
+																if ($_SESSION["status"]!="down"){
+																		$_SESSION["status"] = "down";
+																		$_SESSION["status_in_Down"] = "Sent mail down".date("h:i:sa");
+																		
+																}
+																		//include "mail_down.php";
+																		//send mail
+
+
+
 																$txt = $rows['Router_Name']."\t".$rows['Router_IP']."\t".date("Y-m-d")."\t".date("h:i:sa");
 																fwrite($myfile, $txt.PHP_EOL);
 																$var1 = $rows['Router_Name'];
@@ -173,13 +184,19 @@ function myErrorHandler($errno, $errstr, $errfile, $errline) {
 																$sql="INSERT INTO log (router_name, router_ip, date,time)
 																VALUES('$var1','$var2','$var3','$var4')";
 																if ($conn->query($sql) === TRUE) {
-																	} else {
+																	} 
+																	else {
 																	echo "Error: " . $sql . "<br>" . $conn->error;
 																}
-														}else{
-																
+															
+														}else{																
 																echo $snmpSysUptime;
+																if ($_SESSION["status"]=="down"){
+																		$_SESSION["status"] = "up";
+																		$_SESSION["status_in_up"] = "Sent mail up".date("h:i:sa");
 																}
+															
+														}
                                                                 ?></td>
                                                             <td bgcolor="#FFFFFF"><?php if ($isDown){
                                                                 echo "---";
@@ -188,9 +205,10 @@ function myErrorHandler($errno, $errstr, $errfile, $errline) {
                                                             ?></td>
                                                             <td bgcolor="#FFFFFF"><?php if ($isDown)
                                                     echo "---";
-                                                else
+                                                else{
                                                     echo eregi_replace("STRING:","",$snmpSysLocation[0]);
-                                                    ?></td-->
+                                                   
+												}?></td-->
                                                             <td bgcolor="#FFFFFF"><?php if ($isDown)
                                                     echo "<img src=\"images/Offline.png\" height=\"16\" width=\"16\">";
                                                 else
