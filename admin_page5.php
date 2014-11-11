@@ -160,6 +160,8 @@ function myErrorHandler($errno, $errstr, $errfile, $errline) {
 																if ($_SESSION["status".$rows['Router_Name']]!="down"){
 																		$_SESSION["status".$rows['Router_Name']] = "down";
 																		$_SESSION["check".$rows['Router_Name']] = "down in if ".date("h:i:sa");
+																		$_SESSION["namedown"]=$rows['Router_Name'];
+																		include "mail_down.php";
 																		
 																}else{
 																		$_SESSION["check".$rows['Router_Name']] = "down in else".date("h:i:sa");
@@ -195,6 +197,8 @@ function myErrorHandler($errno, $errstr, $errfile, $errline) {
 																if ($_SESSION["status".$rows['Router_Name']]!="up"){
 																		$_SESSION["status".$rows['Router_Name']] = "up";
 																		$_SESSION["check".$rows['Router_Name']] = "up in if ".date("h:i:sa");
+																		$_SESSION["nameup"]=$rows['Router_Name'];
+																		include "mail_up.php";
 																		
 																}else{
 																		$_SESSION["check".$rows['Router_Name']] = "up in else".date("h:i:sa");

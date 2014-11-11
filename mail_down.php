@@ -16,14 +16,12 @@
 	$mail->Password = "joke1234+"; // GMAIL password
 	$mail->From = "webmaster@thaicreate.com"; // "name@yourdomain.com";
 	//$mail->AddReplyTo = "support@thaicreate.com"; // Reply
-	$mail->FromName = "Mr.Weerachai Nukitram";  // set from Name
+	$mail->FromName = "SNMP MANAGER SERVICE";  // set from Name
 	$mail->Subject = "Router in Topology Down."; 
-	$mail->Body = "Down & <b>Now</b>";
+	$mail->Body = "<b>".$_SESSION["namedown"]."DOWN!"."</b>";
 
-	$mail->AddAddress("gust_jk@hotmail.com", "Mr.Adisorn Boonsong"); // to Address
+	$mail->AddAddress("gust_jk@hotmail.com", "Administrator"); // to Address
 
-	$mail->AddAttachment("thaicreate/myfile.zip");
-	$mail->AddAttachment("thaicreate/myfile2.zip");
 
 	//$mail->AddCC("member@thaicreate.com", "Mr.Member ShotDev"); //CC
 	//$mail->AddBCC("member@thaicreate.com", "Mr.Member ShotDev"); //CC
