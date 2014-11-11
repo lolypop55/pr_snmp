@@ -88,6 +88,7 @@
                                                         <td align="center" bgcolor="#FFFFFF"><strong>Name</strong></td>
                                                         <td align="center" bgcolor="#FFFFFF"><strong>Status</strong></td>
                                                         <td align="center" bgcolor="#FFFFFF"><strong>Password</strong></td>
+                                                        <td align="center" bgcolor="#FFFFFF"><strong>Edit</strong></td>
                                                     </tr>
 
                                                     <?php
@@ -101,6 +102,7 @@
                                                             <td bgcolor="#FFFFFF"><?php echo $rows['Name']; ?></td>
                                                             <td bgcolor="#FFFFFF"><?php echo $rows['Status']; ?></td>
                                                             <td bgcolor="#FFFFFF"><?php echo $rows['Password']; ?></td>
+                                                            <td bgcolor="#FFFFFF"><a href="edit_user.php?id=<?php echo $rows['User_ID']?>">edit</a> </td>
                                                         </tr>
 
                                                         <?php
