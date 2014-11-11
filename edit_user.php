@@ -65,7 +65,7 @@
                                     <table width="478" border="1" style="width: 600px">
                                         <tbody>  <tr>
                                                 <td>&nbsp;User_ID</td>
-                                                <td><input type="text" name="User_ID" id="User_ID" placeholder="<?php echo $rows['User_ID']; ?>"></td>
+                                                <td><input type="hidden" name="User_ID" id="User_ID" value="<?php echo $rows['User_ID']; ?>"><?php echo $rows['User_ID']; ?></td>
                                             </tr>
                                             <tr>
                                                 <td width="157"> &nbsp;Username</td>
